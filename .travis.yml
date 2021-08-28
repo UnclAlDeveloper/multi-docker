@@ -8,10 +8,10 @@ services:
 before-install:
   - docker build -t uad/react-test -f ./client/Dockerfile.dev ./client
 
-before_script: chmod -r 0777 ./node_modules
+# before_script: chmod -r 0777 ./node_modules
 
-# script:
-#   - docker run -e CI=true uad/react-test npm run test
+script:
+  - docker run -e CI=true uad/react-test npm run test
 
 after-success:
   - docker build -t uad/multi-client ./client
