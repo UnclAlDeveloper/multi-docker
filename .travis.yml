@@ -8,6 +8,8 @@ services:
 before-install:
   - docker build -t uad/react-test -f ./client/Dockerfile.dev ./client
 
+before_script: chmod -r 0777 ./node_modules
+
 script:
   - docker run -e CI=true uad/react-test npm run test
 
